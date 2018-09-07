@@ -7,7 +7,7 @@ RUN ln -s /usr/bin/xvfb-chromium /usr/bin/google-chrome
 RUN ln -s /usr/bin/xvfb-chromium /usr/bin/chromium-browser
 
 RUN apt-get update && apt-get install -y \
-    python python-pip curl unzip libgconf-2-4 python-dev wget go git
+    python python-pip curl unzip libgconf-2-4 python-dev wget git
     
 RUN pip install pytest selenium
 
