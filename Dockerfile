@@ -24,11 +24,11 @@ RUN curl -SLO "https://chromedriver.storage.googleapis.com/$CHROMEDRIVER_VERSION
 ADD . /app
 RUN chmod +x /app/entrypoint.sh
 WORKDIR /app
-RUN wget https://nodejs.org/download/release/v8.1.2/node-v8.1.2-linux-x64.tar.gz
-RUN tar xvf node-v8.1.2-linux-x64.tar.gz
+RUN wget https://nodejs.org/dist/v8.11.4/node-v8.11.4-linux-x64.tar.xz
+RUN tar xvf node-v8.11.4-linux-x64.tar.xz
 #RUN /app/node-v6.14.4-linux-x64/bin/npm install -g npm
 
-RUN export PATH=/app/node-v8.1.2-linux-x64/bin/:$PATH && /app/node-v8.1.2-linux-x64/bin/npm install -g npm && /app/node-v8.1.2-linux-x64/bin/npm install
+RUN export PATH=/app/node-v8.11.4-linux-x64/bin/:$PATH && /app/node-v8.11.4-linux-x64/bin/npm install -g npm && /app/node-v8.11.4-linux-x64/bin/npm install
 
 ENTRYPOINT ["/app/entrypoint.sh"]
 CMD ["/app/entrypoint.sh"]
