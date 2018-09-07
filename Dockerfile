@@ -16,5 +16,10 @@ RUN useradd -d /home/term -m -s /bin/bash term
 RUN echo 'term:term' | chpasswd
 RUN sudo adduser term sudo
 
+# Default ENV params used by wetty
+ENV REMOTE_SSH_SERVER ""
+ENV REMOTE_SSH_PORT ""
+ENV REMOTE_SSH_USER ""
+
 ENTRYPOINT ["/app/entrypoint.sh"]
 CMD ["/app/entrypoint.sh"]
