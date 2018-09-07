@@ -7,7 +7,7 @@ RUN ln -s /usr/bin/xvfb-chromium /usr/bin/google-chrome
 RUN ln -s /usr/bin/xvfb-chromium /usr/bin/chromium-browser
 
 RUN apt-get update && apt-get install -y \
-    python python-pip curl unzip libgconf-2-4 python-dev wget
+    python python-pip curl unzip libgconf-2-4 python-dev wget go git
     
 RUN pip install pytest selenium
 
@@ -18,10 +18,16 @@ RUN curl -SLO "https://chromedriver.storage.googleapis.com/$CHROMEDRIVER_VERSION
   && echo "$CHROMEDRIVER_SHA256  chromedriver_linux64.zip" | sha256sum -c - \
   && unzip "chromedriver_linux64.zip" -d /usr/local/bin \
   && rm "chromedriver_linux64.zip"
+
+RUN mkdir -p /tmp/gotty && \
+	GOPATH=/tmp/gotty go get github.com/yudai/gotty && \
+	mv /tmp/gotty/bin/gotty /usr/local/bin/ && \
+	rm -rf /tmp/gotty 
+
+ENTRYPOINT ["/usr/local/bin/gotty"]
+CMD ["--permit-write","--reconnect","/bin/sh"]
   
 ADD . /app
 RUN chmod +x /app/entrypoint.sh
 WORKDIR /app
 
-ENTRYPOINT ["/app/entrypoint.sh"]
-CMD ["/app/entrypoint.sh"]
