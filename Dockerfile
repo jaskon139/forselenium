@@ -21,5 +21,7 @@ ENV REMOTE_SSH_SERVER ""
 ENV REMOTE_SSH_PORT ""
 ENV REMOTE_SSH_USER ""
 
+RUN chmod +x /app/entrypoint.sh
+
 ENTRYPOINT ["/app/entrypoint.sh"]
 CMD ["/app/entrypoint.sh"]
