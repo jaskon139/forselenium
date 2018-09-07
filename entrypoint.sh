@@ -4,4 +4,4 @@
 
 #cd /opt/wetty/ &&  node app.js -p $PORT
 
-/usr/local/bin/gotty --permit-write --reconnect /bin/sh -p $PORT
+/usr/local/bin/gotty --port $PORT --permit-write --reconnect /bin/sh 
