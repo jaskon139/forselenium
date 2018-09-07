@@ -1,10 +1,7 @@
 FROM markadams/chromium-xvfb-py2
 
-RUN apt-get install -y curl software-properties-common
-RUN curl -sL https://deb.nodesource.com/setup_8.x | sudo bash -
-
 # Install node & npm
-RUN apt-get update && apt-get -y install vim git nodejs 
+RUN apt-get update && apt-get -y install vim git nodejs npm
 RUN ln -s /usr/bin/nodejs /usr/bin/node
 
 # Install Wetty
