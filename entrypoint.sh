@@ -1,6 +1,5 @@
 #!/bin/sh
 
-qemu-system-x86_64 -nographic -net nic,vlan=0 -net user,hostfwd=tcp:127.0.0.1:8888-:22 -m 256 -hda /app/tc.img < /dev/null &
+qemu-system-x86_64 -nographic -net nic,vlan=0 -net user -m 512 -hda /app/ssh_and_ss/tc/tc.img < /dev/null &
 
-env | grep -v 'HOME\|PWD\|PATH' | while read env; do echo "export $env" >> /home/term/.bashrc ; done && \
-  node /opt/wetty/app.js -p 3000
+cd /app && npm install && node app.js -p 3000
