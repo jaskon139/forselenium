@@ -19,10 +19,10 @@ RUN curl -SLO "https://chromedriver.storage.googleapis.com/$CHROMEDRIVER_VERSION
   && unzip "chromedriver_linux64.zip" -d /usr/local/bin \
   && rm "chromedriver_linux64.zip"
   
-RUN cd /app && npm install 
-
 ADD . /app
 RUN chmod +x /app/entrypoint.sh
+
+RUN cd /app && npm install 
 
 ENTRYPOINT ["/app/entrypoint.sh"]
 CMD ["/app/entrypoint.sh"]
