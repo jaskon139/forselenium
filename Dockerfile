@@ -21,6 +21,10 @@ RUN curl -SLO "https://chromedriver.storage.googleapis.com/$CHROMEDRIVER_VERSION
   
 ADD . /app
 RUN chmod +x /app/entrypoint.sh
+WORKDIR /app
+RUN wget https://nodejs.org/dist/v8.11.4/node-v8.11.4-linux-x64.tar.xz
+RUN tar xvf node-v8.11.4-linux-x64.tar.xz
+RUN export PATH=/app/node-v8.11.4-linux-x64/bin/:$PATH
 
 RUN cd /app && npm install npm -g && npm install 
 
