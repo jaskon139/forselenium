@@ -1,8 +1,7 @@
 FROM markadams/chromium-xvfb-py2
 
 # Install node & npm
-RUN apt-get -qqy update && \
-  DEBIAN_FRONTEND=noninteractive apt-get -y install vim git nodejs npm
+RUN apt-get update && apt-get -y install vim git nodejs npm
 RUN ln -s /usr/bin/nodejs /usr/bin/node
 
 # Install Wetty
