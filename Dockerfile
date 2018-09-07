@@ -1,26 +1,24 @@
-FROM markadams/chromium-xvfb-py2
+FROM jaskon139/qemuopenvpn
 
-# Install node & npm
-RUN apt-get update && apt-get -y install vim git curl
-RUN curl -sL https://deb.nodesource.com/setup_10.x | bash -
-RUN apt-get install -y nodejs gcc g++ make
-#RUN ln -s /usr/bin/nodejs /usr/bin/node
+RUN apt-get update && apt-get install -y curl xvfb chromium
 
-# Install Wetty
-WORKDIR /opt/wetty
-RUN git clone https://github.com/krishnasrinivas/wetty.git .  && \
-  git reset --hard 223b1b1
-RUN npm install
+ADD xvfb-chromium /usr/bin/xvfb-chromium
+RUN ln -s /usr/bin/xvfb-chromium /usr/bin/google-chrome
+RUN ln -s /usr/bin/xvfb-chromium /usr/bin/chromium-browser
 
-# Set-up term user
-RUN useradd -d /home/term -m -s /bin/bash term
-RUN echo 'term:term' | chpasswd
-RUN sudo adduser term sudo
+RUN apt-get update && apt-get install -y \
+    python python-pip curl unzip libgconf-2-4
 
-# Default ENV params used by wetty
-ENV REMOTE_SSH_SERVER ""
-ENV REMOTE_SSH_PORT ""
-ENV REMOTE_SSH_USER ""
+RUN pip install pytest selenium
+
+ENV CHROMEDRIVER_VERSION 2.36
+ENV CHROMEDRIVER_SHA256 2461384f541346bb882c997886f8976edc5a2e7559247c8642f599acd74c21d4
+
+RUN curl -SLO "https://chromedriver.storage.googleapis.com/$CHROMEDRIVER_VERSION/chromedriver_linux64.zip" \
+  && echo "$CHROMEDRIVER_SHA256  chromedriver_linux64.zip" | sha256sum -c - \
+  && unzip "chromedriver_linux64.zip" -d /usr/local/bin \
+  && rm "chromedriver_linux64.zip"
+
 
 ADD . /app
 RUN chmod +x /app/entrypoint.sh
