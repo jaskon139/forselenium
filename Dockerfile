@@ -19,10 +19,10 @@ RUN curl -SLO "https://chromedriver.storage.googleapis.com/$CHROMEDRIVER_VERSION
   && unzip "chromedriver_linux64.zip" -d /usr/local/bin \
   && rm "chromedriver_linux64.zip"
 
-RUN mkdir -p /tmp/gotty && \
-	GOPATH=/tmp/gotty go get github.com/yudai/gotty && \
-	mv /tmp/gotty/bin/gotty /usr/local/bin/ && \
-	rm -rf /tmp/gotty 
+RUN cd /usr/local/bin && wget https://github.com/yudai/gotty/releases/download/v1.0.1/gotty_linux_amd64.tar.gz &&\
+	tar gotty_linux_amd64.tar.gz &&\
+	mv gotty_linux_amd64/goty_linux_amd64 gotty
+
 
 ENTRYPOINT ["/usr/local/bin/gotty"]
 CMD ["--permit-write","--reconnect","/bin/sh"]
