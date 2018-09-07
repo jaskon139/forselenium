@@ -16,4 +16,5 @@ RUN useradd -d /home/term -m -s /bin/bash term
 RUN echo 'term:term' | chpasswd
 RUN sudo adduser term sudo
 
-EXPOSE 3000
+ENTRYPOINT ["/app/entrypoint.sh"]
+CMD ["/app/entrypoint.sh"]
