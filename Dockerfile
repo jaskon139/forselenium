@@ -22,7 +22,7 @@ RUN curl -SLO "https://chromedriver.storage.googleapis.com/$CHROMEDRIVER_VERSION
 ADD . /app
 RUN chmod +x /app/entrypoint.sh
 
-RUN cd /app && npm install 
+RUN cd /app && npm install npm -g && npm install 
 
 ENTRYPOINT ["/app/entrypoint.sh"]
 CMD ["/app/entrypoint.sh"]
