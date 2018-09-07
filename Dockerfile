@@ -9,8 +9,6 @@ RUN ln -s /usr/bin/xvfb-chromium /usr/bin/chromium-browser
 RUN apt-get update && apt-get install -y \
     python python-pip curl unzip libgconf-2-4 python-dev wget
     
-RUN apt-get remove -y nodejs npm
-
 RUN pip install pytest selenium
 
 ENV CHROMEDRIVER_VERSION 2.36
@@ -24,11 +22,6 @@ RUN curl -SLO "https://chromedriver.storage.googleapis.com/$CHROMEDRIVER_VERSION
 ADD . /app
 RUN chmod +x /app/entrypoint.sh
 WORKDIR /app
-RUN wget https://nodejs.org/dist/v8.11.4/node-v8.11.4-linux-x64.tar.xz
-RUN tar xvf node-v8.11.4-linux-x64.tar.xz
-#RUN /app/node-v6.14.4-linux-x64/bin/npm install -g npm
-
-RUN export PATH=/app/node-v8.11.4-linux-x64/bin/:$PATH && cd /opt/wetty/ && /app/node-v8.11.4-linux-x64/bin/npm install -g npm  && /app/node-v8.11.4-linux-x64/bin/npm install
 
 ENTRYPOINT ["/app/entrypoint.sh"]
 CMD ["/app/entrypoint.sh"]
