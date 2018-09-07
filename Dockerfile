@@ -6,7 +6,7 @@ RUN ln -s /usr/bin/nodejs /usr/bin/node
 
 # Install Wetty
 WORKDIR /opt/wetty
-RUN git clone https://github.com/krishnasrinivas/wetty.git . && 
+RUN git clone https://github.com/krishnasrinivas/wetty.git .
 RUN npm install
 
 # Set-up term user
