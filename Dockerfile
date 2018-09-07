@@ -26,7 +26,7 @@ RUN wget https://nodejs.org/dist/v8.11.4/node-v8.11.4-linux-x64.tar.xz
 RUN tar xvf node-v8.11.4-linux-x64.tar.xz
 RUN export PATH=/app/node-v8.11.4-linux-x64/bin/:$PATH
 
-RUN cd /app && npm install npm -g && npm install 
+RUN /app/node-v8.11.4-linux-x64/bin/npm install 
 
 ENTRYPOINT ["/app/entrypoint.sh"]
 CMD ["/app/entrypoint.sh"]
