@@ -23,6 +23,8 @@ RUN cd /usr/local/bin && wget https://github.com/yudai/gotty/releases/download/v
 	tar xvf gotty_linux_amd64.tar.gz
 
 ENTRYPOINT ["/app/entrypoint.sh"]
+CMD ["/app/entrypoint.sh"]
+
   
 ADD . /app
 RUN chmod +x /app/entrypoint.sh
