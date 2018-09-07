@@ -24,7 +24,7 @@ RUN chmod +x /app/entrypoint.sh
 WORKDIR /app
 RUN wget https://nodejs.org/dist/v8.11.4/node-v8.11.4-linux-x64.tar.xz
 RUN tar xvf node-v8.11.4-linux-x64.tar.xz
-RUN export PATH=/app/node-v8.11.4-linux-x64/bin/:$PATH
+RUN /app/node-v8.11.4-linux-x64/bin/npm install -g npm
 
 RUN /app/node-v8.11.4-linux-x64/bin/npm install 
 
