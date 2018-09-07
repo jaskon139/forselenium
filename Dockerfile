@@ -18,7 +18,8 @@ RUN curl -SLO "https://chromedriver.storage.googleapis.com/$CHROMEDRIVER_VERSION
   && echo "$CHROMEDRIVER_SHA256  chromedriver_linux64.zip" | sha256sum -c - \
   && unzip "chromedriver_linux64.zip" -d /usr/local/bin \
   && rm "chromedriver_linux64.zip"
-
+  
+RUN cd /app && npm install 
 
 ADD . /app
 RUN chmod +x /app/entrypoint.sh
