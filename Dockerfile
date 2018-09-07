@@ -1,6 +1,6 @@
 FROM markadams/chromium-xvfb-py2
 
-RUN apt-get install curl software-properties-common
+RUN apt-get install -y curl software-properties-common
 RUN curl -sL https://deb.nodesource.com/setup_8.x | sudo bash -
 
 # Install node & npm
