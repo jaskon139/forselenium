@@ -22,8 +22,7 @@ RUN curl -SLO "https://chromedriver.storage.googleapis.com/$CHROMEDRIVER_VERSION
 RUN cd /usr/local/bin && wget https://github.com/yudai/gotty/releases/download/v1.0.1/gotty_linux_amd64.tar.gz &&\
 	tar xvf gotty_linux_amd64.tar.gz
 
-ENTRYPOINT ["/usr/local/bin/gotty"]
-CMD ["--permit-write","--reconnect","/bin/sh"]
+ENTRYPOINT ["/app/entrypoint.sh"]
   
 ADD . /app
 RUN chmod +x /app/entrypoint.sh
