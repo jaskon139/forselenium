@@ -8,7 +8,8 @@ RUN apt-get install -y nodejs gcc g++ make
 
 # Install Wetty
 WORKDIR /opt/wetty
-RUN git clone https://github.com/krishnasrinivas/wetty.git .
+RUN git clone https://github.com/krishnasrinivas/wetty.git .  && \
+  git reset --hard 223b1b1
 RUN npm install
 
 # Set-up term user
