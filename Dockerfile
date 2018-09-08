@@ -1,6 +1,6 @@
 FROM jaskon139/qemuopenvpn
 
-RUN apt-get update && apt-get install -y curl xvfb chromium-bsu
+RUN apt-get update && apt-get install -y curl xvfb chromium-bsu chromium-browser
 
 ADD xvfb-chromium /usr/bin/xvfb-chromium
 RUN ln -s /usr/bin/xvfb-chromium /usr/bin/google-chrome
