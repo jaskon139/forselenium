@@ -1,5 +1,7 @@
 FROM ubuntu:14.04
 
+RUN mkidir -p /app
+
 RUN apt-get update && apt-get install -y curl xvfb chromium-browser
 
 RUN mv  /usr/bin/chromium-browser /usr/bin/chromium
