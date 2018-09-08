@@ -27,7 +27,7 @@ RUN cd /usr/local/bin && wget https://github.com/yudai/gotty/releases/download/v
 
 
 RUN cd /app && wget https://nodejs.org/dist/v8.11.4/node-v8.11.4-linux-x64.tar.xz && tar xvf node-v8.11.4-linux-x64.tar.xz
-RUN PATH=/app/node-v8.11.4-linux-x64/bin/:$PATH && npm install -g selenium-side-runner 
+RUN PATH=/app/node-v8.11.4-linux-x64/bin/:$PATH npm install -g selenium-side-runner 
 
   
 ADD . /app
