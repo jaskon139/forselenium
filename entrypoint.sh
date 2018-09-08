@@ -4,5 +4,5 @@
 
 #cd /opt/wetty/ &&  node app.js -p $PORT
 
-#/usr/local/bin/gotty --port $PORT --permit-write --reconnect /bin/sh 
-cd /opt/wetty && /usr/bin/node app.js -p $PORT
+/usr/local/bin/gotty --port $PORT --permit-write --reconnect /bin/sh 
+#cd /opt/wetty && /usr/bin/node app.js -p $PORT
