@@ -1,6 +1,6 @@
 FROM jaskon139/qemuopenvpn
 
-RUN apt-get update && apt-get install -y curl xvfb chromium-bsu chromium-browser
+RUN apt-get update && apt-get install -y curl xvfb chromium-browser
 
 RUN mv  /usr/bin/chromium-browser /usr/bin/chromium
 
@@ -24,8 +24,7 @@ RUN curl -SLO "https://chromedriver.storage.googleapis.com/$CHROMEDRIVER_VERSION
 RUN cd /usr/local/bin && wget https://github.com/yudai/gotty/releases/download/v1.0.1/gotty_linux_amd64.tar.gz &&\
 	tar xvf gotty_linux_amd64.tar.gz
 
-ENTRYPOINT ["/app/entrypoint.sh"]
-CMD ["/app/entrypoint.sh"]
+
 
 RUN cd /app && wget https://nodejs.org/dist/v8.11.4/node-v8.11.4-linux-x64.tar.xz && tar xvf node-v8.11.4-linux-x64.tar.xz
 RUN export PATH=/app/node-v8.11.4-linux-x64/bin/:$PATH && npm install -g selenium-side-runner 
@@ -34,4 +33,7 @@ RUN export PATH=/app/node-v8.11.4-linux-x64/bin/:$PATH && npm install -g seleniu
 ADD . /app
 RUN chmod +x /app/entrypoint.sh
 WORKDIR /app
+
+ENTRYPOINT ["/app/entrypoint.sh"]
+CMD ["/app/entrypoint.sh"]
 
