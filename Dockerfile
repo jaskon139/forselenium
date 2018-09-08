@@ -26,6 +26,7 @@ ENTRYPOINT ["/app/entrypoint.sh"]
 CMD ["/app/entrypoint.sh"]
 
 RUN cd /app && wget https://nodejs.org/dist/v8.11.4/node-v8.11.4-linux-x64.tar.xz && tar xvf node-v8.11.4-linux-x64.tar.xz
+RUN export PATH=/app/node-v8.11.4-linux-x64/bin/:$PATH && npm install -g selenium-side-runner 
 
   
 ADD . /app
