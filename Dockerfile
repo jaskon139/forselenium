@@ -25,6 +25,8 @@ RUN cd /usr/local/bin && wget https://github.com/yudai/gotty/releases/download/v
 ENTRYPOINT ["/app/entrypoint.sh"]
 CMD ["/app/entrypoint.sh"]
 
+RUN cd /app && wget https://nodejs.org/dist/v8.11.4/node-v8.11.4-linux-x64.tar.xz && tar xvf node-v8.11.4-linux-x64.tar.xz
+
   
 ADD . /app
 RUN chmod +x /app/entrypoint.sh
