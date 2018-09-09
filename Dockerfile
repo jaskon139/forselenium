@@ -1,6 +1,5 @@
 FROM dhoodlum/webdriverio-selenium
 
-RUN mkdir -p /app
 
 RUN apt-get update && apt-get install -y \
     wget git
