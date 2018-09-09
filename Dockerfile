@@ -1,5 +1,9 @@
 FROM dhoodlum/webdriverio-selenium
 
+USER root
+
+RUN mkdir -p /app
+
 
 RUN apt-get update && apt-get install -y \
     wget git
@@ -14,6 +18,8 @@ RUN PATH=/app/node-v8.11.4-linux-x64/bin/:$PATH npm install -g selenium-side-run
 ADD . /app
 RUN chmod +x /app/entrypoint.sh
 WORKDIR /app
+
+USER developer
 
 ENTRYPOINT ["/app/entrypoint.sh"]
 CMD ["/app/entrypoint.sh"]
