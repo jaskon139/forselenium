@@ -19,8 +19,6 @@ ADD . /app
 RUN chmod +x /app/entrypoint.sh
 WORKDIR /app
 
-USER developer
-
 ENTRYPOINT ["/app/entrypoint.sh"]
 CMD ["/app/entrypoint.sh"]
 
