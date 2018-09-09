@@ -20,7 +20,6 @@ RUN cd /usr/local/bin && wget https://github.com/yudai/gotty/releases/download/v
 
 RUN cd /app && wget https://nodejs.org/dist/v8.11.4/node-v8.11.4-linux-x64.tar.xz && tar xvf node-v8.11.4-linux-x64.tar.xz
 RUN cd /app && wget https://bitbucket.org/ariya/phantomjs/downloads/phantomjs-2.1.1-linux-x86_64.tar.bz2 && tar xvf phantomjs-2.1.1-linux-x86_64.tar.bz2
-RUN PATH=/app/node-v8.11.4-linux-x64/bin/:/app/phantomjs-2.1.1-linux-x86_64/bin:$PATH npm install -g phantom 
   
 ADD . /app
 RUN chmod +x /app/entrypoint.sh
