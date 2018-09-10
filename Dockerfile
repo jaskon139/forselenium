@@ -1,26 +1,17 @@
-FROM ubuntu:14.04
+FROM node:8
 
-RUN mkdir -p /app
+RUN apt-get update && \
+	apt-get install -yq gconf-service libasound2 libatk1.0-0 libc6 libcairo2 libcups2 libdbus-1-3 \
+	libexpat1 libfontconfig1 libgcc1 libgconf-2-4 libgdk-pixbuf2.0-0 libglib2.0-0 libgtk-3-0 libnspr4 \
+	libpango-1.0-0 libpangocairo-1.0-0 libstdc++6 libx11-6 libx11-xcb1 libxcb1 libxcomposite1 \
+	libxcursor1 libxdamage1 libxext6 libxfixes3 libxi6 libxrandr2 libxrender1 libxss1 libxtst6 \
+	ca-certificates fonts-liberation libappindicator1 libnss3 lsb-release xdg-utils wget
 
-RUN apt-get update && apt-get install -y curl chromium-browser
-
-RUN apt-get update && apt-get install -y \
-    unzip wget git xz-utils
-    
-ENV CHROMEDRIVER_VERSION 2.36
-ENV CHROMEDRIVER_SHA256 2461384f541346bb882c997886f8976edc5a2e7559247c8642f599acd74c21d4
-
-RUN curl -SLO "https://chromedriver.storage.googleapis.com/$CHROMEDRIVER_VERSION/chromedriver_linux64.zip" \
-  && echo "$CHROMEDRIVER_SHA256  chromedriver_linux64.zip" | sha256sum -c - \
-  && unzip "chromedriver_linux64.zip" -d /usr/local/bin \
-  && rm "chromedriver_linux64.zip"
+RUN npm i puppeteer
 
 RUN cd /usr/local/bin && wget https://github.com/yudai/gotty/releases/download/v1.0.1/gotty_linux_amd64.tar.gz &&\
 	tar xvf gotty_linux_amd64.tar.gz
 
-RUN cd /app && wget https://nodejs.org/dist/v8.11.4/node-v8.11.4-linux-x64.tar.xz && tar xvf node-v8.11.4-linux-x64.tar.xz
-RUN cd /app && wget https://bitbucket.org/ariya/phantomjs/downloads/phantomjs-2.1.1-linux-x86_64.tar.bz2 && tar xvf phantomjs-2.1.1-linux-x86_64.tar.bz2
-  
 ADD . /app
 RUN chmod +x /app/entrypoint.sh
 WORKDIR /app
