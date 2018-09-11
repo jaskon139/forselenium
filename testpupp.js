@@ -42,9 +42,15 @@ async function run() {
 
   await page.waitFor(30 * 1000);
   await page.screenshot({path: 'screenshot\\github4.png'});
+  await page.waitFor(3 * 1000);
+  
+  await page.keyboard.down('Control');
+  await page.keyboard.press('F9');
+  await page.keyboard.up('Control');
+  console.log('Pressed Ctrl-F9');
 
-  await page.click('//*[@id="view_container"]/div/div/div[2]/div/div[2]/div/div[1]/div/content/span');
-  await page.waitFor(30 * 1000);
+  await page.waitFor(30 *1000);
+
   await page.screenshot({path: 'screenshot\\github5.png'});
   //login colab
   //await page.goto('https://colab.research.google.com/drive/1WwKxek-2R3txpjPi-Ly2HrxLxIE06Fom');
