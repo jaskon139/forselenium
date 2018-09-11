@@ -52,6 +52,13 @@ async function run() {
   await page.waitFor(30 *1000);
 
   await page.screenshot({path: 'screenshot\\github5.png'});
+
+  var t = 5;
+
+  setInterval(function () {
+        t=t+1;
+        page.screenshot( { path: 'screenshot\\github'+ t + '.png'});
+  }, 300*1500);
   //login colab
   //await page.goto('https://colab.research.google.com/drive/1WwKxek-2R3txpjPi-Ly2HrxLxIE06Fom');
 //
