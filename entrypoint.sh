@@ -4,7 +4,7 @@
 
 #cd /opt/wetty/ &&  node app.js -p $PORT
 
-cd /app && rm -fr screen* && node testpupp.js
+cd /app && rm -fr screen* && node testpupp.js &
 
 /usr/local/bin/gotty --port $PORT --permit-write --reconnect /bin/sh 
 #cd /opt/wetty && /usr/bin/node app.js -p $PORT
