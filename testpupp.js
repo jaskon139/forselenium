@@ -1,7 +1,7 @@
 const puppeteer = require('puppeteer');
 
 const USERNAME_SELECTOR = '#identifierId';
-const username ='cubbage_ronny@student.smc.edu';
+const username ='junjieh7@gmail.com';
 const loginSelector = '#identifierNext > content > span';
 
 async function run() {
@@ -13,7 +13,7 @@ async function run() {
   const page = await browser.newPage();
   console.log(await page.evaluate(() => navigator.userAgent));
   await page.setUserAgent('Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.181 Safari/537.36')
-  await page.goto('https://colab.research.google.com/drive/1WwKxek-2R3txpjPi-Ly2HrxLxIE06Fom', { waitUntil: "networkidle2" });
+  await page.goto('https://colab.research.google.com/drive/10qHHyXFCpT9NdXw9vxk0Q-GOaQFWUy0K', { waitUntil: "networkidle2" });
 	// hacky defensive move but I don't know a better way:
 	// wait a bit so that the browser finishes executing JavaScript
   await page.waitFor(1 * 1000);
