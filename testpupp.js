@@ -18,11 +18,12 @@ async function run() {
 	// wait a bit so that the browser finishes executing JavaScript
   await page.waitFor(1 * 1000);
 	
-  await navigationPromise
   await page.waitForSelector('input[type="email"]')
   await page.screenshot({path: 'screenshot\\github0.png'});
   await page.type('input[type="email"]', username)
   await page.click('#identifierNext')
+  
+  await page.waitFor(1 * 1000); 
     
   await page.waitForSelector('input[type="password"]', { visible: true })
   await page.type('input[type="password"]',"junjiehsyttxysh@2000") 
@@ -31,9 +32,8 @@ async function run() {
   await page.waitForSelector('#passwordNext', { visible: true })
   await page.click('#passwordNext')
   await page.screenshot({path: 'screenshot\\github3.png'});
-  await navigationPromise
-
-  await page.waitFor(30 * 1000);
+  
+await page.waitFor(30 * 1000);
   await page.screenshot({path: 'screenshot\\github4.png'});
   await page.waitFor(3 * 1000);
   
