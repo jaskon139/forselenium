@@ -17,28 +17,21 @@ async function run() {
 	// hacky defensive move but I don't know a better way:
 	// wait a bit so that the browser finishes executing JavaScript
   await page.waitFor(1 * 1000);
-
+	
+  await navigationPromise
+  await page.waitForSelector('input[type="email"]')
   await page.screenshot({path: 'screenshot\\github0.png'});
-  await page.waitForSelector('#identifierId');
+  await page.type('input[type="email"]', username)
+  await page.click('#identifierNext')
+    
+  await page.waitForSelector('input[type="password"]', { visible: true })
+  await page.type('input[type="password"]',"junjiehsyttxysh@2000") 
   await page.screenshot({path: 'screenshot\\github1.png'});
-  await page.type('#identifierId', username, { delay: 5 });
-  await page.click('#identifierNext');
-
-  await page.waitFor(1 * 1000);
-  await page.screenshot({path: 'screenshot\\github2.png'});
-
-  //login the google
-  await page.waitForSelector('#frmLogin_UserName');
-  await page.type('#frmLogin_UserName', 'cubbage_ronny', { delay: 5 } );
-
-  await page.waitFor(6 * 1000);
-  await page.waitForSelector('#frmLogin_Password');
-  await page.click('#frmLogin_Password');
-  await page.type('#frmLogin_Password', 'Hellohello2000', { delay: 5 } );  
-
-  await page.waitFor(1 * 1000);
-  await page.click('#btnLogin');
+    
+  await page.waitForSelector('#passwordNext', { visible: true })
+  await page.click('#passwordNext')
   await page.screenshot({path: 'screenshot\\github3.png'});
+  await navigationPromise
 
   await page.waitFor(30 * 1000);
   await page.screenshot({path: 'screenshot\\github4.png'});
