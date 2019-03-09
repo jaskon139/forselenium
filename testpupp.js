@@ -26,7 +26,7 @@ async function run() {
   await page.waitFor(1 * 1000); 
     
   await page.waitForSelector('input[type="password"]', { visible: true })
-  await page.type('input[type="password"]',"junjiehsyttxysh@2000") 
+  await page.type('input[type="password"]',"") 
   await page.screenshot({path: 'screenshot\\github1.png'});
     
   await page.waitForSelector('#passwordNext', { visible: true })
