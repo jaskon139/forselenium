@@ -7,8 +7,8 @@ const loginSelector = '#identifierNext > content > span';
 async function run() {
   const browser = await puppeteer.launch({
 			args: ['--no-sandbox', '--incognito'] ,
-			headless: true，
-	                userDataDir：./ChromeUser
+			headless: true,
+	                userDataDir: './ChromeUser'
 		});
 
   const page = await browser.newPage();
